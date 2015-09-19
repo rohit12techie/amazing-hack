@@ -16,7 +16,7 @@ LIBS = -L. -L/usr/lib -lm  -lrt  -lcrypt $(LIB_XML_OBJ) \
 	./$(TARGET_DIR)/lib/libshttpd.a 
 	
 
-obj: prep $(MAIN).o balance_sheet.o db.o ui_fh_info.o ui_mates_info.o sai_voslib.o utility.o
+obj: prep $(MAIN).o az_ditributed_sys.o az_db.o az_scheduler.o az_user.o az_utility.o az_resiliency.o
 
 sum: $(OBJ_DIR)/*.o
 	$(CC) $(CFLAGS) -o $@ $^ $(PTHREAD_LIB) $(LIBS)
