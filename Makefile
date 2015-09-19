@@ -1,48 +1,59 @@
-MAIN=main
+MAIN=az_main
 CC=gcc -g
 SRC=source
 TARGET_DIR=target
 OBJ_DIR = $(TARGET_DIR)/obj
 M32=-m32
 
-INC_FILES= -I/usr/local/include -I/usr/include/libxml2 -I$(SRC)/websvr/inc -I$(SRC)/FH/inc -I$(SRC)/webint/inc 
+INC_FILES= -I/usr/local/include -I/usr/include/libxml2 -I$(SRC)/include 
 
 CFLAGS = $(DEBUG) $(OPTIM) $(M32) -DLINUX -I. $(INC_FILES)
 
 PTHREAD_LIB = -lpthread
 
 LIBS = -L. -L/usr/lib -lm  -lrt  -lcrypt $(LIB_XML_OBJ) \
-	$(TARGET_DIR)/lib/libxyssl.a \
-	./$(TARGET_DIR)/lib/libshttpd.a 
-	
 
-obj: prep $(MAIN).o az_ditributed_sys.o az_db.o az_scheduler.o az_user.o az_utility.o az_resiliency.o
 
-sum: $(OBJ_DIR)/*.o
+obj: prep $(MAIN).o az_server.o az_priority_mgmt.o az_task_mgmt.o az_client.o \
+				 az_utility.o az_resiliency.o 
+
+amazing: $(OBJ_DIR)/*.o
 	$(CC) $(CFLAGS) -o $@ $^ $(PTHREAD_LIB) $(LIBS)
-all:sum
+all:amazing
 
 
-lib: prep
-	make -f $(SRC)/websvr/Makefile TARGET_DIR=$(TARGET_DIR)
 
-cleanlib:
-	make clean -f $(SRC)/websvr/Makefile TARGET_DIR=$(TARGET_DIR)
 prep:
 	if [ ! -d ${OBJ_DIR} ] ; then \
 	   mkdir ${OBJ_DIR} ;\
-	fi
-	if [ ! -d ${LIB_DIR} ] ; then \
-	   mkdir ${LIB_DIR} ;\
 	fi
 	
 	
 $(MAIN).o:$(MAIN).c
 	$(CC) $(CFLAGS) -c $(MAIN).c -o $(OBJ_DIR)/$@
 	
-balance_sheet.o :$(SRC)/FH/src/balance_sheet.c
-	$(CC) $(CFLAGS) -c $(SRC)/FH/src/balance_sheet.c -o $(OBJ_DIR)/$@
+az_client.o :$(SRC)/client/az_client.c
+	$(CC) $(CFLAGS) -c $(SRC)/client/az_client.c -o $(OBJ_DIR)/$@
 	
+az_resiliency.o:$(SRC)/resiliency_support/az_resiliency.c
+	$(CC) $(CFLAGS) -c $(SRC)/resiliency_support/az_resiliency.c -o $(OBJ_DIR)/$@
+
+az_parser.o:$(SRC)/parser/az_parser.c
+	$(CC) $(CFLAGS) -c $(SRC)/parser/az_parser.c -o $(OBJ_DIR)/$@
+
+az_server.o:$(SRC)/server/az_server.c
+	$(CC) $(CFLAGS) -c $(SRC)/server/az_server.c -o $(OBJ_DIR)/$@
+
+az_priority_mgmt.o:$(SRC)/scheduler/priority_management/az_priority_mgmt.c
+	$(CC) $(CFLAGS) -c $(SRC)/scheduler/priority_management/az_priority_mgmt.c -o $(OBJ_DIR)/$@
+
+az_task_mgmt.o:$(SRC)/scheduler/task_management/az_task_mgmt.c
+	$(CC) $(CFLAGS) -c $(SRC)/scheduler/task_management/az_task_mgmt.c -o $(OBJ_DIR)/$@
+
+
+az_utility.o:$(SRC)/utility/az_utility.c
+	$(CC) $(CFLAGS) -c $(SRC)/utility/az_utility.c -o $(OBJ_DIR)/$@
+
 
 clean:
-	rm -f *.o sum
+	rm -f *.o amazing

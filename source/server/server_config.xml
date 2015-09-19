@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+    <SERVER-INFO>
+		<NUMBER-OF-SERVER val="4" />
+		<IP-LIST>
+			<IP-ADD-1 val="192.168.1.2"/>
+			<IP-ADD-2 val="192.168.1.3"/>
+			<IP-ADD-2 val="192.168.1.4"/>
+			<IP-ADD-3 val="192.168.1.5"/>
+		</IP-LIST>
+		<OVERLOAD-LIMIT val="3"/>
+	</SERVER-INFO>
