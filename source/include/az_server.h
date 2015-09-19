@@ -9,7 +9,17 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
-
+#define MAX 100
 #define SERVER_CONFIG_FILE "source/server/server_config.xml"
 
 #endif
+
+typedef server_information
+{
+    char ip_add[16];
+    long load_factor;
+    int client_id;
+    int mq_id;
+}server_info_t;
+
+
