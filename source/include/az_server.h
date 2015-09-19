@@ -9,17 +9,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
-#define MAX_SERV_NUMBER 100
-#define IP_LEN 20
-
-
-enum server_port {
-    PORT1 = 9000,
-    PORT2,
-    PORT3,
-    PORT4
-}server_port_e;
-
+#define MAX 100
 #define SERVER_CONFIG_FILE "source/server/server_config.xml"
 
 typedef struct server_resiliency_info {
@@ -31,4 +21,15 @@ typedef struct server_resiliency_info {
     int load_factor;
 }server_resiliency_info_t;
 
+typedef server_information
+{
+    char ip_add[16];
+    long load_factor;
+    int client_id;
+    int mq_id;
+}server_info_t;
+
+
 #endif
+
+

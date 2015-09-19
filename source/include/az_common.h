@@ -35,4 +35,14 @@ typedef struct global_ctx {
     generic_list_t *lowest_pq;
 }global_ctx_t;
 
+
+typedef struct user_context
+{
+     int item_id;
+     long merchant_id;
+     long merchantplace_id;
+     int priority;
+     char data_type;
+     void *payload;
+}user_context_t;
 #endif
