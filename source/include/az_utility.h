@@ -45,7 +45,7 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_str_from_xml_2_local (curr, (SAI_CHAR *)(value), len))\
+                    copy_str_from_xml_2_local (curr, (char *)(value), len))\
                 {\
                     return FAILURE;\
                 }\
@@ -58,11 +58,11 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int8_from_xml_2_local (curr, (SAI_INT8 *)&get_val))\
+                    copy_int8_from_xml_2_local (curr, (char *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
-                value = (SAI_UINT8)get_val;\
+                value = (unsigned char)get_val;\
             }\
         }
 
@@ -72,11 +72,11 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int8_from_xml_2_local (curr, (SAI_INT8 *)&get_val))\
+                    copy_int8_from_xml_2_local (curr, (char *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
-                value = (SAI_UINT8)get_val;\
+                value = (unsigned char)get_val;\
             }\
         }
 
@@ -86,11 +86,11 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int16_from_xml_2_local (curr, (SAI_INT16 *)&get_val))\
+                    copy_int16_from_xml_2_local (curr, (short int *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
-                value = (SAI_UINT16)get_val;\
+                value = (unsigned short)get_val;\
             }\
         }
 
@@ -100,11 +100,11 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int16_from_xml_2_local (curr, (SAI_INT16 *)&get_val))\
+                    copy_int16_from_xml_2_local (curr, (short int *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
-                value = (SAI_UINT16)get_val;\
+                value = (unsigned short)get_val;\
             }\
         }
 
@@ -114,11 +114,11 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int32_from_xml_2_local (curr, (SAI_INT32 *)&get_val))\
+                    copy_int32_from_xml_2_local (curr, (int *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
-                value = (SAI_UINT32)get_val;\
+                value = (unsigned int)get_val;\
             }\
         }
 
@@ -128,11 +128,11 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int32_from_xml_2_local (curr, (SAI_INT32 *)&get_val))\
+                    copy_int32_from_xml_2_local (curr, (int *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
-                value = (SAI_UINT32)get_val;\
+                value = (unsigned int)get_val;\
             }\
         }
 
@@ -142,7 +142,7 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int64_from_xml_2_local (curr, (SAI_UINT64 *)&get_val))\
+                    copy_int64_from_xml_2_local (curr, (long int *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
@@ -155,7 +155,7 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int64_from_xml_2_local (curr, (SAI_UINT64 *)&get_val))\
+                    copy_int64_from_xml_2_local (curr, (long int *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
@@ -169,11 +169,11 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int8_from_xml_2_local (curr, (SAI_INT8 *)&get_val))\
+                    copy_int8_from_xml_2_local (curr, (char *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
-                value = (SAI_UCHAR)get_val;\
+                value = (unsigned char)get_val;\
             }\
         }
 
@@ -183,11 +183,11 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_int8_from_xml_2_local (curr, (SAI_INT8 *)&get_val))\
+                    copy_int8_from_xml_2_local (curr, (char *)&get_val))\
                 {\
                     return FAILURE;\
                 }\
-                value = (SAI_UCHAR)get_val;\
+                value = (unsigned char)get_val;\
             }\
         }
 
@@ -196,13 +196,13 @@
         { \
             if (XML_ELEMENT_NODE == curr->type)\
             {\
-                memset (buffer, SAI_ZERO, 100);\
+                memset (buffer, 0, 100);\
                 if (FAILURE ==\
-                    copy_str_from_xml_2_local (curr, (SAI_CHAR *)buffer, len))\
+                    copy_str_from_xml_2_local (curr, (char *)buffer, len))\
                 {\
                     return FAILURE;\
                 }\
-                if(SUCCESS!=convert_str_to_val (buffer, (SAI_CHAR *)data))\
+                if(SUCCESS!=convert_str_to_val (buffer, (char *)data))\
                 {\
                     return FAILURE;\
                 }\
@@ -215,7 +215,7 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_str_to_ipv4_fmt(curr, (SAI_UINT8 *)ipv4_addr))\
+                    copy_str_to_ipv4_fmt(curr, (unsigned char *)ipv4_addr))\
                 {\
                     return FAILURE;\
                 }\
@@ -228,7 +228,7 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_str_to_ipv4_fmt(curr, (SAI_UINT8 *)ipv4_addr))\
+                    copy_str_to_ipv4_fmt(curr, (unsigned char *)ipv4_addr))\
                 {\
                     return FAILURE;\
                 }\
@@ -241,7 +241,7 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_str_to_ipv6_fmt(curr, (SAI_UINT8 *)ipv6_addr))\
+                    copy_str_to_ipv6_fmt(curr, (unsigned char *)ipv6_addr))\
                 {\
                     return FAILURE;\
                 }\
@@ -254,7 +254,7 @@
             if (XML_ELEMENT_NODE == curr->type)\
             {\
                 if (FAILURE ==\
-                    copy_str_to_ipv6_fmt(curr, (SAI_UINT8 *)ipv6_addr))\
+                    copy_str_to_ipv6_fmt(curr, (unsigned char *)ipv6_addr))\
                 {\
                     return FAILURE;\
                 }\
@@ -266,7 +266,7 @@
         {\
             if (XML_ELEMENT_NODE == curr->type)\
             {\
-                copy_byte_from_xml_2_local (curr, (SAI_BYTE *)&value);\
+                copy_byte_from_xml_2_local (curr, (8 *)&value);\
             }\
         }
 
@@ -274,4 +274,4 @@
 #endif
 
 
-#endif
+

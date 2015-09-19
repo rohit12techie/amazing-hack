@@ -7,7 +7,7 @@
 
 #define SUCCESS 0
 #define FAILURE 1
-
+#define STATUS int
 
 typedef struct option_ {
     char item[100];

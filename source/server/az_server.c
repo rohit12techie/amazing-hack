@@ -15,7 +15,7 @@ void get_server_config()
 
     memset(&st, 0, sizeof(struct stat));
 
-    if (SAI_ZERO !=stat (SERVER_CONFIG_FILE, &st))
+    if (0 !=stat (SERVER_CONFIG_FILE, &st))
     {
         printf("Error:Unable to find Server config file :%s\n",
                                                 SERVER_CONFIG_FILE);

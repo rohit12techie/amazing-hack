@@ -27,7 +27,7 @@ copy_str_from_xml_2_local (xmlNode * node, char *buffer, unsigned char len)
 
 
 STATUS
-copy_int8_from_xml_2_local (xmlNode * node, SAI_INT8 * out)
+copy_int8_from_xml_2_local (xmlNode * node, char * out)
 {
     xmlChar *val;
     val = xmlGetProp (node, (xmlChar *) "val");
@@ -44,7 +44,7 @@ copy_int8_from_xml_2_local (xmlNode * node, SAI_INT8 * out)
 
 
 STATUS
-copy_int16_from_xml_2_local (xmlNode * node, SAI_INT16 * out)
+copy_int16_from_xml_2_local (xmlNode * node, short int * out)
 {
     xmlChar *val;
     val = xmlGetProp (node, (xmlChar *) "val");
@@ -60,7 +60,7 @@ copy_int16_from_xml_2_local (xmlNode * node, SAI_INT16 * out)
 }
 
 STATUS
-copy_int32_from_xml_2_local (xmlNode * node, SAI_INT32 * out)
+copy_int32_from_xml_2_local (xmlNode * node, int * out)
 {
     xmlChar *val;
     val = xmlGetProp (node, (xmlChar *) "val");
@@ -93,7 +93,7 @@ copy_int64_from_xml_2_local (xmlNode * node, long int * out)
 
 
 STATUS
-copy_byte_from_xml_2_local (xmlNode * node, SAI_BYTE * out)
+copy_byte_from_xml_2_local (xmlNode * node, 8 * out)
 {
     xmlChar *val;
     val = xmlGetProp (node, (xmlChar *) "val");
@@ -103,7 +103,7 @@ copy_byte_from_xml_2_local (xmlNode * node, SAI_BYTE * out)
         printf ("[%s] get prop failed\n", node->name);
         return FAILURE;
     }
-    *out = (SAI_BYTE) atoi ((char *) val);
+    *out = (8) atoi ((char *) val);
 
     return SUCCESS;
 }
