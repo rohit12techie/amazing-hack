@@ -18,3 +18,13 @@ typedef struct option_ {
 
 
 #endif
+
+typedef struct user_context
+{
+     int item_id;
+     long merchant_id;
+     long merchantplace_id;
+     int priority;
+     char data_type;
+     void *payload;
+}user_context_t;
