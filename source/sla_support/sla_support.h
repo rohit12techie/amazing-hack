@@ -52,7 +52,7 @@ typedef struct _ticket_attributes_t{
 	cur_status_e cur_status;
 }ticket_state;
 
-int get_ticket_status(ticket_state *tkt){
+int inline get_ticket_status(ticket_state *tkt){
 	
 	int rval;
 	ticket_state *ltkt;
@@ -66,7 +66,7 @@ int get_ticket_status(ticket_state *tkt){
 	return SUCCESS;
 }
 
-int set_ticket_info(int ticket_id, priority_e priority, struct assign_state, struct resolve_state, cur_status_e cur_status){
+int inline set_ticket_status(int ticket_id, priority_e priority, struct assign_state, struct resolve_state, cur_status_e cur_status){
 
 	ticket_state *tkt;
 	
@@ -77,8 +77,14 @@ int set_ticket_info(int ticket_id, priority_e priority, struct assign_state, str
 	tkt->priority  = priority;
 	tkt->assign_state = assign_state;
 	tkt->resolve_state = resolve_state;
-	tkt->cur_status = cur_status;	
+	tkt->cur_status = cur_status;
+
+	return SUCCESS;
 }
 
+int get_ticket_info(ticket_state *tkt)
+{
+	
+}
 #endif
 
