@@ -1,5 +1,11 @@
 #ifndef __AZ_UTILITY_H
 #define __AZ_UTILITY_H
+
+
+#include "az_common.h"
+#include <libxml/parser.h>
+#include <libxml/tree.h>
+
 #define TWO 2
 #define THREE 3
 #define FOUR 4
@@ -11,22 +17,26 @@
 #define HUNDRED 100
 #define TWOFIFTYFIVE 255
 #define FIVEONESIX 516
-#define MAX_IMSI_IMEI_IMSIV_LEN             16
-#define MAX_M_TMSI_CELLID_TEID_LEN          8
-#define MAX_PLMN_ID_LEN                     6
-#define MAX_KNAS_INT_ENC_LEN                32
-#define MAX_KENB_KASME_PLMNSECKEY_LEN       64
-#define MAX_URRP_MME_R_IP_LEN               20
-#define MAX_EPS_BR_ID_AND_FLAG_LEN          22
-#define MAX_LAI_LEN                         10
-#define MAX_TAC_LEN                         4
-#define MAX_BITRATE_G_BITRATE_LEN           10
-#define MAX_CHARGE_ID_LEN                   8
-#define MAX_AV_RAND_AUTN_LEN                32
-#define MAX_AV_XRES_LEN                     16
-#define MAX_AV_KASME_LEN                    64
-#define MAX_UE_RADIO_CAP_LEN                96
-#define MAX_ALG_CIP_R_INT_LEN               4
+
+#define IPV4_MAX_LEN                               4
+#define IPV6_MAX_LEN                               16
+#define ARRAY_INDEX_ZERO                                          0
+#define ARRAY_INDEX_ONE                                           1
+#define ARRAY_INDEX_TWO                                           2
+#define ARRAY_INDEX_THREE                                         3
+#define ARRAY_INDEX_FOUR                                          4
+#define ARRAY_INDEX_FIVE                                          5
+#define ARRAY_INDEX_SIX                                           6
+#define ARRAY_INDEX_SEVEN                                         7
+#define ARRAY_INDEX_EIGHT                                         8
+#define ARRAY_INDEX_NINE                                          9
+#define ARRAY_INDEX_TEN                                           10
+#define ARRAY_INDEX_ELEVEN                                        11
+#define ARRAY_INDEX_TWELVE                                        12
+#define ARRAY_INDEX_THIRTEEN                                      13
+#define ARRAY_INDEX_FOURTEEN                                      14
+#define ARRAY_INDEX_FIFTEEN                                       15
+#define ARRAY_INDEX_SIXTEEN                                       16
 
 
 #define READ_STR_VALUE_FRM_XML(curr, string, value, len)\
@@ -259,6 +269,9 @@
                 copy_byte_from_xml_2_local (curr, (SAI_BYTE *)&value);\
             }\
         }
+
+
+#endif
 
 
 #endif

@@ -3,6 +3,7 @@
  */
 #include "az_server.h"
 #include "az_common.h"
+#include "az_utility.h"
 
 void get_server_config()
 {
@@ -12,7 +13,7 @@ void get_server_config()
     int get_val;
     struct stat st;
 
-    memset(&st, SAI_ZERO, sizeof(struct stat));
+    memset(&st, 0, sizeof(struct stat));
 
     if (SAI_ZERO !=stat (SERVER_CONFIG_FILE, &st))
     {
@@ -22,7 +23,7 @@ void get_server_config()
     }
     if (NULL == (doc = xmlReadFile (SERVER_CONFIG_FILE, NULL, 0)))
     {
-        SAI_DEBUG_L1 ("error: could not parse file %s\n", SERVER_CONFIG_FILE);
+        printf ("error: could not parse file %s\n", SERVER_CONFIG_FILE);
         return FAILURE;
     }
     rootnode = xmlDocGetRootElement (doc);
