@@ -1,5 +1,69 @@
 #include "az_common.h"
+#include "az_utility.h"
 
+extern server_resiliency_info_t *global_ctx;
+
+room_balance_sheet_t *
+find_member_details_by_name(char *name)
+{
+    room_balance_sheet_t *node = NULL;
+    node = (room_balance_sheet_t *)mctx->list->first;
+
+    if ( NULL == node)
+    {
+        printf("No Item found in list\n");
+        return NULL;
+
+    }
+    while(node)
+    {
+        if(!strcmp(node->name,name))
+        {
+            return node;
+        }
+        node = node->next;
+    }
+    return NULL;
+}
+
+list_element_t * add_node_into_list (generic_list_t *list,void *node)
+{
+    list_element_t *cur = NULL;
+    list_element_t *elem = NULL;
+
+    elem = node;
+    cur = list->first;
+
+    if (NULL == cur)
+    {
+        list->first = elem;
+
+    } else {
+        elem->next = cur;
+        list->first = elem;
+    }
+    list->num_node++;
+    return (elem);
+}
+
+void display_list_element(generic_list_t *list)
+{
+    room_balance_sheet_t *temp = NULL;
+    if ( NULL == list)
+    {
+        printf("List is Empty\n");
+        return;
+    }
+
+    printf("Number of Element in List:%d\n",list->num_node);
+
+    temp  = (room_balance_sheet_t *)list->first;
+    while(temp)
+    {
+        printf("Name:%s\t",temp->name);
+        temp = temp->next;
+    }
+}
 
 
 STATUS
@@ -93,7 +157,7 @@ copy_int64_from_xml_2_local (xmlNode * node, long int * out)
 
 
 STATUS
-copy_byte_from_xml_2_local (xmlNode * node, 8 * out)
+copy_byte_from_xml_2_local (xmlNode * node, unsigned char * out)
 {
     xmlChar *val;
     val = xmlGetProp (node, (xmlChar *) "val");
@@ -103,7 +167,7 @@ copy_byte_from_xml_2_local (xmlNode * node, 8 * out)
         printf ("[%s] get prop failed\n", node->name);
         return FAILURE;
     }
-    *out = (8) atoi ((char *) val);
+    *out = (unsigned char) atoi ((char *) val);
 
     return SUCCESS;
 }

@@ -3,7 +3,7 @@ CC=gcc -g
 SRC=source
 TARGET_DIR=target
 OBJ_DIR = $(TARGET_DIR)/obj
-M32=-m32
+#M32=-m32
 
 INC_FILES= -I/usr/local/include -I/usr/include/libxml2 -I$(SRC)/include 
 
@@ -11,7 +11,7 @@ CFLAGS = $(DEBUG) $(OPTIM) $(M32) -DLINUX -I. $(INC_FILES)
 
 PTHREAD_LIB = -lpthread
 
-LIBS = -L. -L/usr/lib -lm  -lrt  -lcrypt $(LIB_XML_OBJ) \
+LIBS = -L. -L/usr/lib -lm  -lrt  -lcrypt  -lxml2  
 
 
 obj: prep $(MAIN).o az_server.o az_priority_mgmt.o az_task_mgmt.o az_client.o \

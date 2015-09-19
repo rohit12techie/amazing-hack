@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
+#include <sys/stat.h>
 
 #define SUCCESS 0
 #define FAILURE 1
@@ -16,5 +18,21 @@ typedef struct option_ {
     char ch;
 }option_t;
 
+typedef struct generic_list_
+{
+    int num_node;
+    list_element_t *first;
+
+}generic_list_t;
+
+typedef struct global_ctx {
+    generic_list_t *serv_list;
+    generic_list_t *user_list;
+    generic_list_t *highest_pq;
+    generic_list_t *high_pq;
+    generic_list_t *normal_pq;
+    generic_list_t *low_pq;
+    generic_list_t *lowest_pq;
+}global_ctx_t;
 
 #endif
